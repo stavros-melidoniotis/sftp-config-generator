@@ -1,0 +1,243 @@
+/* ---- CSS RESET ---- */
+
+main {
+  flex: 1;
+}
+
+html,
+body {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  height: 100%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+html {
+  min-height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+address,
+big,
+cite,
+code,
+em,
+font,
+img,
+small,
+strike,
+sub,
+sup,
+li,
+ol,
+ul,
+fieldset,
+form,
+label,
+legend,
+button,
+table,
+caption,
+tr,
+th,
+td {
+  border: none;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+img {
+  width: 100%;
+}
+
+.wp-block-image img {
+  object-fit: contain;
+}
+
+blockquote::before,
+blockquote::after {
+  content: "";
+}
+
+body {
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: Jetbrains;
+  src: url("/assets/fonts/JetBrainsMono-Regular.woff2");
+}
+
+:root {
+  --main: #193549;
+  --main-dark: #15232d;
+  --code-highlight: #ffc600;
+  --code-highlight-dark: #e1b000;
+  --editor-width: 400px;
+  --editor-height: 600px;
+  --main-box-radius: 8px;
+}
+
+body {
+  background-color: var(--code-highlight);
+  color: #fff;
+  font-family: Jetbrains;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#content {
+  flex: 1 0 auto;
+}
+
+main {
+  display: flex;
+  box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.24);
+}
+
+.main-box {
+  width: var(--editor-width);
+  height: var(--editor-height);
+  padding: 1rem;
+}
+
+#editor {
+  color: #000;
+  background-color: #fff;
+  border-radius: var(--main-box-radius) 0px 0px var(--main-box-radius);
+  overflow-y: auto;
+}
+
+#editor > .form-group {
+  margin-top: 1rem;
+}
+
+#editor > .form-group > label {
+  margin-bottom: .3rem;
+}
+
+.form-control:focus {
+  border-color: var(--main);
+  box-shadow: 0 0 0 0.25rem rgb(25 53 73 / 35%) !important;
+}
+
+#result {
+  width: calc(var(--editor-width) + 200px);
+  background-color: var(--main-dark);
+  border-radius: 0px var(--main-box-radius) var(--main-box-radius) 0px;
+  position: relative;
+}
+
+#result > div {
+  overflow-x: auto;
+}
+
+.bracket,
+.key {
+  color: var(--code-highlight);
+}
+
+.line {
+  padding-left: 1rem;
+}
+
+#action-btn-container {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.action-btn {
+  background: none;
+  color: #fff;
+  opacity: .3;
+  transition: all .3s;
+}
+
+.action-btn:hover {
+  opacity: 1;
+}
+
+footer {
+  width: 100%;
+  background-color: var(--code-highlight-dark);
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Custom scrollbar */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--main);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #26506d;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 1016px) {
+  main {
+    flex-direction: column;
+  }
+
+  #editor,
+  #result {
+    width: 90vw;
+    height: 40vh;
+  }
+
+  #editor {
+    border-radius: var(--main-box-radius) var(--main-box-radius) 0px 0px;
+  }
+
+  #result {
+    border-radius: 0px 0px var(--main-box-radius) var(--main-box-radius);
+  }
+}
