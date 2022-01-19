@@ -104,6 +104,7 @@ body {
   --editor-width: 400px;
   --editor-height: 600px;
   --main-box-radius: 8px;
+  --result-bottom-margin: 1.5rem;
 }
 
 body {
@@ -115,8 +116,16 @@ body {
   align-items: center;
 }
 
+#github-fork-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+
 #content {
   flex: 1 0 auto;
+  z-index: 1;
 }
 
 main {
@@ -159,6 +168,7 @@ main {
 
 #result > div {
   overflow-x: auto;
+  margin-bottom: var(--result-bottom-margin);
 }
 
 .bracket,
@@ -172,7 +182,7 @@ main {
 
 #action-btn-container {
   position: absolute;
-  bottom: 10px;
+  bottom: calc(10px - var(--result-bottom-margin));
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -199,6 +209,17 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+#creator-link {
+  color: var(--main-dark);
+}
+
+#creator-link:hover {
+  color: var(--main-dark);
+  text-decoration: underline !important;
 }
 
 /* Custom scrollbar */
@@ -230,14 +251,15 @@ footer {
   #editor,
   #result {
     width: 90vw;
-    height: 40vh;
   }
 
   #editor {
+    max-height: 40vh;
     border-radius: var(--main-box-radius) var(--main-box-radius) 0px 0px;
   }
 
   #result {
+    height: auto;
     border-radius: 0px 0px var(--main-box-radius) var(--main-box-radius);
   }
 }
