@@ -75,7 +75,7 @@ a {
 }
 
 img {
-  width: 100%;
+  max-width: 100%;
 }
 
 .wp-block-image img {
@@ -101,19 +101,59 @@ body {
   --main-dark: #15232d;
   --code-highlight: #ffc600;
   --code-highlight-dark: #e1b000;
-  --editor-width: 400px;
+  --selection-link-color: #FF628C;
+  --editor-width: 40%;
   --editor-height: 600px;
   --main-box-radius: 8px;
   --result-bottom-margin: 1.5rem;
+}
+
+::selection {
+  background-color: var(--main-dark);
+  color: var(--code-highlight);
+}
+
+a::selection {
+  color: var(--selection-link-color);
+}
+
+a::-moz-selection {
+  color: var(--selection-link-color);
+}
+
+::-moz-selection { 
+  background-color: var(--main-dark);
+  color: var(--code-highlight);
+}
+
+#json-container > p::selection,
+#json-container > p > span::selection {
+  background-color: var(--code-highlight);
+  color: var(--main-dark);
+}
+
+#json-container > p::-moz-selection,
+#json-container > p > span::-moz-selection {
+  background-color: var(--code-highlight);
+  color: var(--main-dark);
 }
 
 body {
   background-color: var(--code-highlight);
   color: #fff;
   font-family: Jetbrains;
+  padding-top: 1rem;
+}
+
+body > div {
+  flex: 1 0 auto;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+}
+
+#extension-link {
+  color: var(--main-dark);
 }
 
 #github-fork-link {
@@ -124,7 +164,6 @@ body {
 }
 
 #content {
-  flex: 1 0 auto;
   z-index: 1;
 }
 
@@ -160,7 +199,7 @@ main {
 }
 
 #result {
-  width: calc(var(--editor-width) + 200px);
+  width: calc(100% - var(--editor-width));
   background-color: var(--main-dark);
   border-radius: 0px var(--main-box-radius) var(--main-box-radius) 0px;
   position: relative;
@@ -206,6 +245,7 @@ footer {
   width: 100%;
   background-color: var(--code-highlight-dark);
   padding: 1rem 0;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -219,6 +259,9 @@ footer {
 
 #creator-link:hover {
   color: var(--main-dark);
+}
+
+.hover-underlined:hover {
   text-decoration: underline !important;
 }
 
@@ -250,11 +293,12 @@ footer {
 
   #editor,
   #result {
-    width: 90vw;
+    width: 100%;
   }
 
   #editor {
-    max-height: 40vh;
+    height: auto;
+    max-height: 70vh;
     border-radius: var(--main-box-radius) var(--main-box-radius) 0px 0px;
   }
 

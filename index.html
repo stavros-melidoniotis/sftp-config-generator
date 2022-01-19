@@ -5,25 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SFTP Config Generator</title>
+    <title>(s)FTP Config Generator</title>
     <link rel="icon" type="image/png" href="./assets/images/favicon.png"/>
 
-    <meta name="title" content="SFTP Config Generator">
+    <meta name="title" content="(s)FTP Config Generator">
     <meta name="description" content="Configure your sftp.json file with ease!">
-    <meta name="keywords" content="sftp, vscode, config, generator, extension">
+    <meta name="keywords" content="sftp, ftp, vscode, config, generator, extension">
     <meta name="author" content="Stavros Melidoniotis">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://stavros-melidoniotis.github.io/sftp-config-generator/">
-    <meta property="og:title" content="SFTP Config Generator">
+    <meta property="og:title" content="(s)FTP Config Generator">
     <meta property="og:description" content="Configure your sftp.json file with ease!">
     <meta property="og:image" content="https://stavros-melidoniotis.github.io/sftp-config-generator/assets/images/social-share-img.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://stavros-melidoniotis.github.io/sftp-config-generator/">
-    <meta property="twitter:title" content="SFTP Config Generator">
+    <meta property="twitter:title" content="(s)FTP Config Generator">
     <meta property="twitter:description" content="Configure your sftp.json file with ease!">
     <meta property="twitter:image" content="https://stavros-melidoniotis.github.io/sftp-config-generator/assets/images/social-share-img.png">
 
@@ -34,108 +34,116 @@
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <div id="content" class="d-flex justify-content-center align-items-center">
-        <main>
-            <div id="editor" class="main-box">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" name="name" id="name-input" value="my-server" placeholder="my-server">
+    <div class="container">
+        <h1 id="title" class="fs-2"> <b>SFTP/FTP</b> Config Generator </h1>
+        <h2 id="subtitle" class="fs-5 mb-4"> for 
+            <a id="extension-link" class="hover-underlined" href="https://marketplace.visualstudio.com/items?itemName=liximomo.sftp" target="_blank" rel="noopener">this</a> 
+            vscode extension 
+        </h2>
+
+        <div id="content" class="d-flex justify-content-center align-items-center">
+            <main>
+                <div id="editor" class="main-box">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" id="name-input" value="my-server" placeholder="my-server">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="host">Host</label>
+                        <input type="text" class="form-control" name="host" id="host-input" placeholder="127.0.0.1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="protocol">Protocol</label>
+                        <select class="custom-select" name="protocol" id="protocol-input">
+                            <option selected value="ftp">ftp</option>
+                            <option value="sftp">sftp</option>
+                        </select>
+
+                        <label for="port">Port</label>
+                        <select class="custom-select" name="port" id="port-input">
+                            <option selected value="21">21</option>
+                            <option value="22">22</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="remote-path">Remote path</label>
+                        <input type="text" class="form-control" name="remote-path" id="remote-path-input" placeholder="/wp-content/themes/my_theme">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" name="username" id="username-input" placeholder="john_doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="text" class="form-control" name="password" id="password-input" placeholder="mysercr3tpassw0rd">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="upload-on-save-input">Upload on save?</label>
+                        <input type="checkbox" value="false" name="upload-on-save-input" id="upload-on-save-input"/>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <label for="host">Host</label>
-                    <input type="text" class="form-control" name="host" id="host-input" placeholder="127.0.0.1">
+                <div id="result" class="main-box">
+                    <a id="github-fork-link" href="https://github.com/stavros-melidoniotis/sftp-config-generator" target="_blank" rel="noopener">
+                        <img width="130" height="130" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1">
+                    </a>
+
+                    <div id="json-container">
+                        <p class="bracket"> { </p>
+                            <p class="line"> 
+                                "<span class="key">name</span>": 
+                                "<span id="name" class="value"></span>", 
+                            </p>
+                            <p class="line"> 
+                                "<span class="key">host</span>": 
+                                "<span id="host" class="value"></span>", 
+                            </p>
+                            <p class="line"> 
+                                "<span class="key">protocol</span>": 
+                                "<span id="protocol" class="value"></span>", 
+                            </p>
+                            <p class="line"> 
+                                "<span class="key">port</span>": 
+                                "<span id="port" class="value"></span>", 
+                            </p>
+                            <p class="line"> 
+                                "<span class="key">username</span>": 
+                                "<span id="username" class="value"></span>", 
+                            </p>
+                            <p class="line"> 
+                                "<span class="key">password</span>": 
+                                "<span id="password" class="value"></span>", 
+                            </p>
+                            <p class="line"> 
+                                "<span class="key">remotePath</span>": 
+                                "<span id="remote-path" class="value"></span>", 
+                            </p>
+                            <p class="line"> 
+                                "<span class="key">uploadOnSave</span>": 
+                                "<span id="upload-on-save" class="value"></span>" 
+                            </p>
+                        <p class="bracket"> } </p>
+                    </div>
+
+                    <div id="action-btn-container">
+
+                        <button id="copy-btn" class="action-btn">Copy</button> |
+                        <button id="download-btn" class="action-btn">Download</button>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label for="protocol">Protocol</label>
-                    <select class="custom-select" name="protocol" id="protocol-input">
-                        <option selected value="ftp">ftp</option>
-                        <option value="sftp">sftp</option>
-                    </select>
-
-                    <label for="port">Port</label>
-                    <select class="custom-select" name="port" id="port-input">
-                        <option selected value="21">21</option>
-                        <option value="22">22</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="remote-path">Remote path</label>
-                    <input type="text" class="form-control" name="remote-path" id="remote-path-input" placeholder="/wp-content/themes/my_theme">
-                </div>
-
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" class="form-control" name="username" id="username-input" placeholder="john_doe">
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="text" class="form-control" name="password" id="password-input" placeholder="mysercr3tpassw0rd">
-                </div>
-
-                <div class="form-group">
-                    <label for="upload-on-save-input">Upload on save?</label>
-                    <input type="checkbox" value="false" name="upload-on-save-input" id="upload-on-save-input"/>
-                </div>
-            </div>
-
-            <div id="result" class="main-box">
-                <a id="github-fork-link" href="https://github.com/stavros-melidoniotis/sftp-config-generator" target="_blank" rel="noopener">
-                    <img width="130" height="130" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_white_ffffff.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1">
-                </a>
-
-                <div>
-                    <p class="bracket"> { </p>
-                        <p class="line"> 
-                            "<span class="key">name</span>": 
-                            "<span id="name" class="value"></span>", 
-                        </p>
-                        <p class="line"> 
-                            "<span class="key">host</span>": 
-                            "<span id="host" class="value"></span>", 
-                        </p>
-                        <p class="line"> 
-                            "<span class="key">protocol</span>": 
-                            "<span id="protocol" class="value"></span>", 
-                        </p>
-                        <p class="line"> 
-                            "<span class="key">port</span>": 
-                            "<span id="port" class="value"></span>", 
-                        </p>
-                        <p class="line"> 
-                            "<span class="key">username</span>": 
-                            "<span id="username" class="value"></span>", 
-                        </p>
-                        <p class="line"> 
-                            "<span class="key">password</span>": 
-                            "<span id="password" class="value"></span>", 
-                        </p>
-                        <p class="line"> 
-                            "<span class="key">remotePath</span>": 
-                            "<span id="remote-path" class="value"></span>", 
-                        </p>
-                        <p class="line"> 
-                            "<span class="key">uploadOnSave</span>": 
-                            "<span id="upload-on-save" class="value"></span>" 
-                        </p>
-                    <p class="bracket"> } </p>
-                </div>
-
-                <div id="action-btn-container">
-
-                    <button id="copy-btn" class="action-btn">Copy</button> |
-                    <button id="download-btn" class="action-btn">Download</button>
-                </div>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
 
     <footer>
         <p>
-            Built by <a id="creator-link" href="https://www.linkedin.com/in/stavros-melidoniotis/" target="_blank" rel="noopener"> Stavros Melidoniotis </a>
+            Built by <a id="creator-link" class="hover-underlined" href="https://www.linkedin.com/in/stavros-melidoniotis/" target="_blank" rel="noopener"> Stavros Melidoniotis </a>
         </p>
     </footer>
 </body>
