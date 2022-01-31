@@ -78,18 +78,16 @@ function generateContent() {
     const keys = document.querySelectorAll('.key')
     const values = document.querySelectorAll('.value')
 
-    let fileContent = '{'
+    let fileContent = '{\n'
 
     for (let i = 0; i < keys.length; i++) {
         const key = keys[i].innerText
         const value = (key === 'port' || key === 'uploadOnSave') ? values[i].innerText : `"${values[i].innerText}"`
 
-        fileContent += `"${key}": ${value}`
+        fileContent += `\t"${key}": ${value}`
 
         // Add commas to all fields except the last one
-        if (i !== keys.length - 1) { 
-            fileContent += ','
-        }
+        fileContent += (i !== keys.length - 1) ? ',\n' : '\n'
     }
 
     fileContent += '}'
