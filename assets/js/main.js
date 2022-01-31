@@ -94,8 +94,6 @@ function generateContent() {
 
     fileContent += '}'
 
-    console.log(fileContent);
-
     return fileContent
 }
 
