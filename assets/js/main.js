@@ -81,7 +81,10 @@ function generateContent() {
     let fileContent = '{'
 
     for (let i = 0; i < keys.length; i++) {
-        fileContent += `"${keys[i].innerText}": "${values[i].innerText}"`
+        const key = keys[i].innerText
+        const value = (key === 'port' || key === 'uploadOnSave') ? values[i].innerText : `"${values[i].innerText}"`
+
+        fileContent += `"${key}": ${value}`
 
         // Add commas to all fields except the last one
         if (i !== keys.length - 1) { 
@@ -90,6 +93,8 @@ function generateContent() {
     }
 
     fileContent += '}'
+
+    console.log(fileContent);
 
     return fileContent
 }
